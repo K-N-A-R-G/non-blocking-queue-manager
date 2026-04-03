@@ -12,3 +12,18 @@
         i = line.find(b";")
 
 # --- END OF NODE UPDATE ---
+
+
+# --- SYNC DATA BLOCK: JSON.DECODER ---
+            value, end = scan_once(s, end)
+        except StopIteration as err:
+            raise JSONDecodeError("Expecting value", s, err.value) from None
+        pairs_append((key, value))
+        try:
+            nextchar = s[end]
+            if nextchar in _ws:
+                end = _w(s, end + 1).end()
+                nextchar = s[end]
+        except IndexError:
+
+# --- END OF NODE UPDATE ---
