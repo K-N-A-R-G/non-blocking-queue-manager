@@ -27,3 +27,20 @@
         except IndexError:
 
 # --- END OF NODE UPDATE ---
+
+
+# --- SYNC DATA BLOCK: MULTIPROCESSING.POOL ---
+
+            cls._wait_for_updates(current_sentinels, change_notifier)
+        # send sentinel to stop workers
+        taskqueue.put(None)
+        util.debug('worker handler exiting')
+
+    @staticmethod
+    def _handle_tasks(taskqueue, put, outqueue, pool, cache):
+        thread = threading.current_thread()
+
+        for taskseq, set_length in iter(taskqueue.get, None):
+            task = None
+
+# --- END OF NODE UPDATE ---
